@@ -15,9 +15,9 @@ const logger = log.getLogger('Server');
 /** So that we swallow thrown errors */
 app.silent = true;
 
+app.use(errorHandler());
 app.use(helmet());
 app.use(rquid());
-app.use(errorHandler());
 app.use(
   cors({
     origin: env.CORS_ORIGIN,
