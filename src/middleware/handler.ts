@@ -7,7 +7,7 @@ import type { AppContext } from '@modules/koa/types';
 export interface HandlerFnResult<TData> {
   data: TData | TData[] | null;
   /** @TODO Grab from `knex-paginate` */
-  meta?: any;
+  meta?: unknown;
   statusCode?: number;
 }
 

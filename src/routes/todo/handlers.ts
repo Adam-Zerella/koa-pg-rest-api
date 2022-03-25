@@ -1,6 +1,7 @@
 import { isEmpty } from 'ramda';
 
 import log from '@modules/log';
+import { HandlerFnResult } from '@middleware/handler';
 
 import {
   list,
@@ -9,11 +10,10 @@ import {
   deleteOneOrThrow,
   findOneOrThrow,
 } from './persistence';
-
-import type { TodoBody, TodoParam, TodoQuery } from './schemas';
-import type { AppContext } from '@modules/koa/types';
-import { HandlerFnResult } from '@middleware/handler';
 import { Todo } from './types';
+
+import type { AppContext } from '@modules/koa/types';
+import type { TodoBody, TodoParam, TodoQuery } from './schemas';
 
 const logger = log.getLogger('TodoHandler');
 
