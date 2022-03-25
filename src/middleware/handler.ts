@@ -5,7 +5,9 @@ import log from '@modules/log';
 import type { AppContext } from '@modules/koa/types';
 
 export interface HandlerFnResult<TData> {
-  result: TData | TData[] | null;
+  data: TData | TData[] | null;
+  /** @TODO Grab from `knex-paginate` */
+  meta?: any;
   statusCode?: number;
 }
 
@@ -16,12 +18,12 @@ const logger = log.getLogger('HandlerMiddleware');
 /**
  * Wrap a function callback for error handling
  */
-export default function (handlerFn: HandlerFn) {
+export default function handlerMiddleware(handlerFn: HandlerFn) {
   return async function (ctx: AppContext, next: Next) {
     await next();
 
     try {
-      const { statusCode = 200, ...data } = await handlerFn(ctx);
+      const { statusCode = 200, data } = await handlerFn(ctx);
 
       ctx.status = statusCode;
       ctx.body = data;

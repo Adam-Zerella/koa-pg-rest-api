@@ -12,18 +12,22 @@ import {
 
 import type { TodoBody, TodoParam, TodoQuery } from './schemas';
 import type { AppContext } from '@modules/koa/types';
+import { HandlerFnResult } from '@middleware/handler';
+import { Todo } from './types';
 
 const logger = log.getLogger('TodoHandler');
 
-export async function findAll(ctx: AppContext<null, null, TodoQuery>) {
+export async function findAll(
+  ctx: AppContext<null, null, TodoQuery>,
+): Promise<HandlerFnResult<Todo[]>> {
   const { state } = ctx;
   const { query } = state;
 
   logger.info({ ctx }, `Searching records`);
 
-  const result = await list(query);
+  const { data, meta } = await list(query);
 
-  return result;
+  return { data, meta };
 }
 
 export async function findById(ctx: AppContext<TodoParam>) {
