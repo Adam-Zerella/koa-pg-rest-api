@@ -8,11 +8,11 @@
 
 ## Usage 📖
 
-Getting started with this repo...
+Getting started...
 
 ## Local development
 
-This app relies on [Nodemon](https://nodemon.io/) for local development hot-reloading and debugging.
+This app relies on [Nodemon](https://nodemon.io/) for local development, hot-reloading and debugging.
 
 ### Getting started 🌱
 
@@ -24,7 +24,7 @@ yarn install
 
 As we rely on [Postgres](https://www.postgresql.org/), we need to create, migrate and connect to an instance somewhere.
 
-A popular solution is to run an instance via [Docker](https://www.docker.com/)
+A popular solution is to run an instance via [Docker](https://www.docker.com/).
 
 ```sh
 docker run \
@@ -35,7 +35,7 @@ docker run \
     -d postgres
 ```
 
-From here, you can connect using a popular client such as [Postbird](https://www.electronjs.org/apps/postbird) or [pgAdmin4](https://www.pgadmin.org/download/) to visualise and interact with the data.
+From here, you can connect using a popular client such as [Postbird](https://www.electronjs.org/apps/postbird) or [pgAdmin4](https://www.pgadmin.org/download/) to visualise and interact with the database.
 
 ##### Migrations
 
@@ -65,6 +65,6 @@ TODO
 
 ### Logs out of order
 
-During development, and the way our logging framework [Pino]() works, you'll
+During development, and the way our logging framework [Pino](https://github.com/pinojs/pino) works, you'll
 see that the log order is out of order. This might seem like an error at first however, it's expected
 behaviour due to the way [Pino processes stdout/stderr events](https://github.com/pinojs/pino-pretty/issues/275).
