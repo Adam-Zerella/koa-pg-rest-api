@@ -1,9 +1,7 @@
 import { Context, Next } from 'koa';
-import { v4 as uuidv4 } from 'uuid';
 
 import log from '@modules/log';
 import ApiError from '@modules/error';
-import { ValidationError } from 'yup';
 
 const logger = log.getLogger('ErrorMiddleware');
 

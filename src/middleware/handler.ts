@@ -9,7 +9,7 @@ export interface HandlerFnResult<TData> {
   statusCode?: number;
 }
 
-type HandlerFn = (ctx: AppContext) => Promise<HandlerFnResult<any> | any>;
+type HandlerFn = (ctx: AppContext) => Promise<HandlerFnResult<unknown>>;
 
 const logger = log.getLogger('HandlerMiddleware');
 

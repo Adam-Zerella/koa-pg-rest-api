@@ -12,8 +12,6 @@ import {
 
 import type { TodoBody, TodoParam, TodoQuery } from './schemas';
 import type { AppContext } from '@modules/koa/types';
-import type { HandlerFnResult } from '@middleware/handler';
-import { Todo } from './types';
 
 const logger = log.getLogger('TodoHandler');
 
