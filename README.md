@@ -1,5 +1,7 @@
 # koa-pg-rest-api (KPRA)
 
+[![CI](https://github.com/Adam-Zerella/koa-pg-rest-api/actions/workflows/CI.yml/badge.svg)](https://github.com/Adam-Zerella/koa-pg-rest-api/actions/workflows/CI.yml)
+
 > Scaffolding for an opinionated RESTful API using Koa and PostgreSQL. 🦴
 
 [Koa](https://koajs.com/) is an alternative to Express.js.
