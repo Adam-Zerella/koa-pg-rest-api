@@ -1,7 +1,6 @@
 import { knex } from 'knex';
 import { attachPaginate } from 'knex-paginate';
-
-import omit from 'ramda/src/omit';
+import { omit } from 'ramda';
 
 import env from '@modules/env';
 import log from '@modules/log';
