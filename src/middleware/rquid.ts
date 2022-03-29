@@ -13,7 +13,7 @@ export default function rquidMiddleware() {
     const requestId = uuidv4();
 
     ctx.state.rquid = requestId;
-    ctx.set('X-Request-Id', requestId);
+    ctx.set('X-Request-ID', requestId);
 
     logger.debug({ ctx }, 'Attached unique ID to request state');
 

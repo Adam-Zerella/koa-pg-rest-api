@@ -23,7 +23,7 @@ app.use(
     origin: env.CORS_ORIGIN,
     allowMethods: ['GET', 'PUT', 'POST', 'DELETE'],
     allowHeaders: ['Content-Type', 'Authorization'],
-    exposeHeaders: ['Content-Length', 'Date', 'X-Request-Id'],
+    exposeHeaders: ['Content-Length', 'Date', 'X-Request-ID'],
   }),
 );
 app.use(bodyParser());
