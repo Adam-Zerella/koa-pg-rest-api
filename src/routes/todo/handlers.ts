@@ -30,7 +30,7 @@ export async function findAll(
   return { data, meta };
 }
 
-export async function findById(ctx: AppContext<TodoParam>) {
+export async function findById(ctx: AppContext<TodoParam>): Promise<HandlerFnResult<Todo>> {
   const { params } = ctx;
   const { todoId } = params;
 
@@ -44,17 +44,17 @@ export async function findById(ctx: AppContext<TodoParam>) {
   return { data };
 }
 
-export async function create(ctx: AppContext<null, TodoBody>) {
+export async function create(ctx: AppContext<null, TodoBody>): Promise<HandlerFnResult<Todo>> {
   const { body } = ctx;
 
   const [data] = await insertOneOrThrow<TodoBody>(body);
 
   logger.info({ ctx }, `Created record with ID '${data.id}'`);
 
-  return { data };
+  return { data, statusCode: 201 };
 }
 
-export async function update(ctx: AppContext<TodoParam, TodoBody>) {
+export async function update(ctx: AppContext<TodoParam, TodoBody>): Promise<HandlerFnResult<Todo>> {
   const { body, params } = ctx;
   const { todoId } = params;
 
@@ -70,7 +70,7 @@ export async function update(ctx: AppContext<TodoParam, TodoBody>) {
   return { data: result };
 }
 
-export async function remove(ctx: AppContext<TodoParam>) {
+export async function remove(ctx: AppContext<TodoParam>): Promise<HandlerFnResult<Todo>> {
   const { params } = ctx;
   const { todoId } = params;
 
