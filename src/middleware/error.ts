@@ -26,6 +26,8 @@ export default function errorMiddleware() {
           error: 'An error occurred',
         };
       }
+
+      ctx.app.emit('error', err, ctx);
     }
   };
 }
