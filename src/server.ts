@@ -21,10 +21,14 @@ app.use(rquid());
 app.use(
   cors({
     origin: env.CORS_ORIGIN,
+    allowMethods: ['GET', 'PUT', 'POST', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization'],
+    exposeHeaders: ['Content-Length', 'Date', 'X-Request-Id'],
   }),
 );
 app.use(bodyParser());
 app.use(router.routes());
+app.use(router.allowedMethods());
 
 app.listen(env.PORT);
 
