@@ -1,0 +1,26 @@
+{
+  "name": "@azerella/koa-pg-rest-api-apidocs",
+  "version": "1.0.0",
+  "description": "Generated Swagger documentation from JSDoc.",
+  "private": true,
+  "engines": {
+    "node": "~16"
+  },
+  "scripts": {
+    "docs": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adam-Zerella/koa-pg-rest-api.git"
+  },
+  "author": "Adam A. Zerella <https://azerel.la> (hi@azerel.la)",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "swagger-jsdoc": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@types/swagger-jsdoc": "^6.0.1",
+    "typescript": "^4.6.3"
+  }
+}
