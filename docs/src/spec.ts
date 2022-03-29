@@ -10,10 +10,10 @@ import { tags } from './components/tags';
 
 import type { OAS3Options } from 'swagger-jsdoc';
 
-const todoHandlersPath = path.join('../src/routes/todo/handlers.ts');
+const todoRoutesPath = path.join('../src/routes/todo/routes.ts');
 
 const options: OAS3Options = {
-  apis: [todoHandlersPath],
+  apis: [todoRoutesPath],
   definition: {
     openapi: '3.0.0',
     info: {
