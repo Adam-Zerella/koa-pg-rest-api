@@ -7,4 +7,5 @@ data/
 .DS_Store
 .env
 .env.prod
-yarn-error.log*
+yarn-error.log
+swagger.json
