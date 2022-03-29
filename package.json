@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "build": "run-s build:*",
     "build:clean": "rimraf dist/",
-    "build:js": "esbuild src/server.ts --platform=node --bundle --outdir=dist --target=node16 --minify --legal-comments=none",
+    "build:js": "esbuild src/server.ts --platform=node --bundle --outdir=dist --external:knex --external:pg --target=node16 --minify --legal-comments=none",
     "db": "run-s db:*",
     "db:rollback": "knex migrate:rollback --all",
     "db:migrate": "knex migrate:latest",
