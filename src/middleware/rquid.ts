@@ -10,7 +10,10 @@ const logger = log.getLogger('TraceMiddleware');
  */
 export default function rquidMiddleware() {
   return async function (ctx: Context, next: Next) {
-    ctx.state.rquid = uuidv4();
+    const requestId = uuidv4();
+
+    ctx.state.rquid = requestId;
+    ctx.set('X-Request-Id', requestId);
 
     logger.debug({ ctx }, 'Attached unique ID to request state');
 
