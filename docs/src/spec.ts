@@ -10,8 +10,10 @@ import { tags } from './components/tags';
 
 import type { OAS3Options } from 'swagger-jsdoc';
 
+const todoHandlersPath = path.join('../src/routes/todo/handlers.ts');
+
 const options: OAS3Options = {
-  apis: [path.join(__dirname, '../src/routes/todo/handlers.ts')],
+  apis: [todoHandlersPath],
   definition: {
     openapi: '3.0.0',
     info: {
@@ -21,36 +23,13 @@ const options: OAS3Options = {
     },
     components: {
       headers,
-      parameters: {},
-      responses: {},
       schemas: {},
-      examples: {},
     },
     tags,
-    paths: {
-      '/todo': {
-        get: {
-          tags: ['Todo'],
-          summary: 'List todos',
-          responses: {
-            200: {
-              $ref: '#/responses/listTodo',
-            },
-          },
-        },
-      },
-      '/todo/{todoId}': {
-        tags: ['Todo'],
-        get: {
-          summary: 'Find todo by ID',
-          responses: {
-            200: {
-              $ref: '#/responses/findTodo',
-            },
-          },
-        },
-      },
-    },
+    //   parameters: {},
+    //   responses: {},
+    //   examples: {},
+    // },
   },
 };
 
@@ -67,5 +46,7 @@ async function createSwaggerSpec(fileData: string) {
 }
 
 const outputData = JSON.stringify(swaggerSpec, null, 4);
+
+console.log(outputData);
 
 createSwaggerSpec(outputData);

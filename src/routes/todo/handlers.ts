@@ -17,14 +17,6 @@ import type { TodoBody, TodoParam, TodoQuery } from './schemas';
 
 const logger = log.getLogger('TodoHandler');
 
-/**
- * @swagger
- * /:
- *  get:
- *    description: List all todos
- *    produces:
- *      - application/json
- */
 export async function findAll(
   ctx: AppContext<null, null, TodoQuery>,
 ): Promise<HandlerFnResult<Todo[]>> {

@@ -8,6 +8,20 @@ import { findAllSchema, findByIdSchema, createSchema, updateSchema, removeSchema
 
 const router = new Router();
 
+/**
+ * @openapi
+ * /todo:
+ *   get:
+ *     summary: List all todos
+ *     tags: [Todo]
+ *     responses:
+ *       200:
+ *         description: Returns an array of todos with pagination.
+ *         content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/ArrayOfTodo
+ */
 router.get(
   '/',
   // authenticate,
@@ -15,6 +29,20 @@ router.get(
   handler(findAll),
 );
 
+/**
+ * @openapi
+ * /todo/{todoId}:
+ *   get:
+ *     summary: Find one todo
+ *     tags: [Todo]
+ *     responses:
+ *       200:
+ *         description: Returns a single Todo
+ *         content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Todo
+ */
 router.get(
   '/:todoId',
   // authenticate,
