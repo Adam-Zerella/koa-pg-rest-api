@@ -31,8 +31,10 @@ docker run \
     -e POSTGRES_PASSWORD=postgres \
     -e POSTGRES_DB=todos \
     -e LANG='en_US.UTF-8' \
+    -e PGDATA=/var/lib/postgresql/data/pgdata \
+    -v postgres:/var/lib/postgresql/data \
     -p 5432:5432 \
-    -d postgres
+    -d postgres:14
 ```
 
 From here, you can connect using a popular client such as [Postbird](https://www.electronjs.org/apps/postbird) or [pgAdmin4](https://www.pgadmin.org/download/) to visualise and interact with the database.
