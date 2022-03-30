@@ -4,10 +4,16 @@ import log from '@modules/log';
 
 import type { AppContext } from '@modules/koa/types';
 
+interface HandlerMeta {
+  currentPage: number;
+  perPage: number;
+  from: number;
+  to: number;
+}
+
 export interface HandlerFnResult<TData> {
-  data: TData | TData[] | null;
-  /** @TODO Grab from `knex-paginate` */
-  meta?: unknown;
+  data: TData | null;
+  meta?: HandlerMeta;
   statusCode?: number;
 }
 
