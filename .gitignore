@@ -9,3 +9,4 @@ data/
 .env.prod
 yarn-error.log
 swagger.json
+types.json
