@@ -5,12 +5,16 @@ import swaggerJSDoc from 'swagger-jsdoc';
 
 import { version as appVersion } from '../package.json';
 
+import { schemas } from './components/schemas';
 import { headers } from './components/headers';
 import { tags } from './components/tags';
+import { responses } from './components/responses';
+import { parameters } from './components/parameters';
+import { requests as requestBodies } from './components/requests';
 
 import type { OAS3Options } from 'swagger-jsdoc';
 
-const todoRoutesPath = path.join('../src/routes/todo/routes.ts');
+const todoRoutesPath = path.resolve(__dirname, '../../../src/routes/todo/routes.ts');
 
 const options: OAS3Options = {
   apis: [todoRoutesPath],
@@ -23,30 +27,28 @@ const options: OAS3Options = {
     },
     components: {
       headers,
-      schemas: {},
+      schemas,
+      parameters,
+      responses,
+      requestBodies,
     },
     tags,
-    //   parameters: {},
-    //   responses: {},
-    //   examples: {},
-    // },
   },
 };
 
-const swaggerSpec = swaggerJSDoc(options);
-
-async function createSwaggerSpec(fileData: string) {
+async function createSwaggerSpec() {
   try {
-    const outputPath = path.join('swagger.json');
+    const swaggerSpec = swaggerJSDoc(options);
 
-    await writeFile(outputPath, fileData, 'utf-8');
+    console.log(swaggerSpec);
+
+    const outputPath = path.resolve(__dirname, '../swagger.json');
+    const outputData = JSON.stringify(swaggerSpec, null, 4);
+
+    await writeFile(outputPath, outputData, { encoding: 'utf-8' });
   } catch (err) {
     console.error(err);
   }
 }
 
-const outputData = JSON.stringify(swaggerSpec, null, 4);
-
-console.log(outputData);
-
-createSwaggerSpec(outputData);
+createSwaggerSpec();

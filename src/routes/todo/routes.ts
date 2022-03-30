@@ -13,14 +13,21 @@ const router = new Router();
  * /todo:
  *   get:
  *     summary: List all todos
- *     tags: [Todo]
+ *     tags: ['Todo']
  *     responses:
  *       200:
- *         description: Returns an array of todos with pagination.
+ *         description: Returns an array of todos with pagination metadata.
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/ArrayOfTodo
+ *              allOf:
+ *                - $ref: '#/components/schemas/Response'
+ *                - type: object
+ *                  properties:
+ *                    data:
+ *                      type: array
+ *                      items:
+ *                        $ref: '#/components/schemas/Todo'
  */
 router.get(
   '/',
@@ -34,14 +41,28 @@ router.get(
  * /todo/{todoId}:
  *   get:
  *     summary: Find one todo
- *     tags: [Todo]
+ *     tags: ['Todo']
  *     responses:
  *       200:
  *         description: Returns a single Todo
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Todo
+ *              allOf:
+ *                - $ref: '#/components/schemas/Response'
+ *                - type: object
+ *                  properties:
+ *                    data:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Todo'
+ *       404:
+ *         description: No Todo found
+ *         content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Response'
+ *     parameters:
+ *       - $ref: '#/components/parameters/todoId'
  */
 router.get(
   '/:todoId',
@@ -50,6 +71,28 @@ router.get(
   handler(findById),
 );
 
+/**
+ * @openapi
+ * /todo:
+ *   post:
+ *     summary: Create todo
+ *     tags: ['Todo']
+ *     requestBody:
+ *       $ref: '#/components/requestBodies/createTodo'
+ *     responses:
+ *       201:
+ *         description: Creates a single Todo
+ *         content:
+ *          application/json:
+ *            schema:
+ *              allOf:
+ *                - $ref: '#/components/schemas/Response'
+ *                - type: object
+ *                  properties:
+ *                    data:
+ *                      type: object
+ *                      $ref: '#/components/schemas/Todo'
+ */
 router.post(
   '/',
   // authenticate,

@@ -6,9 +6,6 @@
   "engines": {
     "node": "~16"
   },
-  "scripts": {
-    "docs": "tsc"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Adam-Zerella/koa-pg-rest-api.git"

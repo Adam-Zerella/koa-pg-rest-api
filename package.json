@@ -15,7 +15,11 @@
     "db": "run-s db:*",
     "db:rollback": "knex migrate:rollback --all",
     "db:migrate": "knex migrate:latest",
-    "db:seed": "knex seed:run"
+    "db:seed": "knex seed:run",
+    "docs": "run-s docs:*",
+    "docs:schemas": "typeconv -f ts -t oapi --oapi-format json -o docs/  'src/routes/**/types.ts'",
+    "docs:build": "tsc -p ./docs/tsconfig.json",
+    "docs:generate": "node docs/dist/src/spec.js"
   },
   "engines": {
     "node": "~16"
@@ -78,6 +82,7 @@
     "sinon": "^13.0.1",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
+    "typeconv": "^1.7.0",
     "typescript": "^4.6.3"
   }
 }
