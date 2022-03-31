@@ -1,10 +1,10 @@
 import { OAS3Definition } from 'swagger-jsdoc';
 
-// import createTodo from './responses/todo/create';
+import todoResponses from './todo/responses';
 
 export const responses: OAS3Definition['responses'] = {
   NotFound: {
-    description: 'Not found',
+    description: 'No data found',
   },
-  // ...createTodo,
+  ...todoResponses,
 };

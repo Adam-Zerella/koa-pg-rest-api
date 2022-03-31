@@ -17,7 +17,7 @@
     "db:migrate": "knex migrate:latest",
     "db:seed": "knex seed:run",
     "docs": "run-s docs:*",
-    "docs:schemas": "typeconv -f ts -t oapi --oapi-format json -o docs/  'src/routes/**/types.ts'",
+    "docs:schemas": "typeconv -f ts -t oapi --oapi-format json -o docs/dist/  'src/routes/**/types.ts'",
     "docs:build": "tsc -p ./docs/tsconfig.json",
     "docs:generate": "node docs/dist/src/spec.js"
   },

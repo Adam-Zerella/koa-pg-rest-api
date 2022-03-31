@@ -1,7 +1,7 @@
 import { OAS3Definition } from 'swagger-jsdoc';
 
-import findById from './parameters/todo/findById';
+import todoParams from './todo/parameters';
 
 export const parameters: OAS3Definition['parameters'] = {
-  ...findById,
+  ...todoParams,
 };

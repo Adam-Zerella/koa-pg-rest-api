@@ -16,18 +16,7 @@ const router = new Router();
  *     tags: ['Todo']
  *     responses:
  *       200:
- *         description: Returns an array of todos with pagination metadata.
- *         content:
- *          application/json:
- *            schema:
- *              allOf:
- *                - $ref: '#/components/schemas/Response'
- *                - type: object
- *                  properties:
- *                    data:
- *                      type: array
- *                      items:
- *                        $ref: '#/components/schemas/Todo'
+ *        $ref: '#/components/responses/listTodo'
  */
 router.get(
   '/',
@@ -40,27 +29,13 @@ router.get(
  * @openapi
  * /todo/{todoId}:
  *   get:
- *     summary: Find one todo
+ *     summary: Find a todo
  *     tags: ['Todo']
  *     responses:
  *       200:
- *         description: Returns a single Todo
- *         content:
- *          application/json:
- *            schema:
- *              allOf:
- *                - $ref: '#/components/schemas/Response'
- *                - type: object
- *                  properties:
- *                    data:
- *                      type: object
- *                      $ref: '#/components/schemas/Todo'
+ *         $ref: '#/components/responses/findTodo'
  *       404:
- *         description: No Todo found
- *         content:
- *          application/json:
- *            schema:
- *              $ref: '#/components/schemas/Response'
+ *         $ref: '#/components/responses/NotFound'
  *     parameters:
  *       - $ref: '#/components/parameters/todoId'
  */
@@ -81,17 +56,7 @@ router.get(
  *       $ref: '#/components/requestBodies/createTodo'
  *     responses:
  *       201:
- *         description: Creates a single Todo
- *         content:
- *          application/json:
- *            schema:
- *              allOf:
- *                - $ref: '#/components/schemas/Response'
- *                - type: object
- *                  properties:
- *                    data:
- *                      type: object
- *                      $ref: '#/components/schemas/Todo'
+ *         $ref: '#/components/responses/createTodo'
  */
 router.post(
   '/',
@@ -101,6 +66,20 @@ router.post(
   // audit,
 );
 
+/**
+ * @openapi
+ * /todo/{todoId}:
+ *   put:
+ *     summary: Update a todo
+ *     tags: ['Todo']
+ *     requestBody:
+ *       $ref: '#/components/requestBodies/createTodo'
+ *     responses:
+ *       200:
+ *         $ref: '#/components/responses/createTodo'
+ *     parameters:
+ *       - $ref: '#/components/parameters/todoId'
+ */
 router.put(
   '/:todoId',
   // authenticate,
@@ -109,6 +88,20 @@ router.put(
   // audit,
 );
 
+/**
+ * @openapi
+ * /todo/{todoId}:
+ *   delete:
+ *     summary: Delete a todo
+ *     tags: ['Todo']
+ *     responses:
+ *       200:
+ *         $ref: '#/components/responses/findTodo'
+ *       404:
+ *         $ref: '#/components/responses/NotFound'
+ *     parameters:
+ *       - $ref: '#/components/parameters/todoId'
+ */
 router.delete(
   '/:todoId',
   // authenticate,

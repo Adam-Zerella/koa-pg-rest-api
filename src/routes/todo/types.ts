@@ -1,5 +1,5 @@
 export interface Todo {
-  id: string;
+  id?: string;
   label: string;
   is_enabled?: boolean;
   created_at?: string;

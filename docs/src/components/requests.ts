@@ -1,7 +1,7 @@
 import { OAS3Definition } from 'swagger-jsdoc';
 
-import create from './requests/todo/create';
+import todoRequests from './todo/requests';
 
 export const requests: OAS3Definition['requestBodies'] = {
-  ...create,
+  ...todoRequests,
 };

@@ -7,7 +7,6 @@ import { version as appVersion } from '../package.json';
 
 import { schemas } from './components/schemas';
 import { headers } from './components/headers';
-import { tags } from './components/tags';
 import { responses } from './components/responses';
 import { parameters } from './components/parameters';
 import { requests as requestBodies } from './components/requests';
@@ -20,10 +19,14 @@ const options: OAS3Options = {
   apis: [todoRoutesPath],
   definition: {
     openapi: '3.0.0',
+    externalDocs: {
+      url: 'http://example.com',
+      description: 'API Documentation for the Todo web app.',
+    },
     info: {
-      title: 'API Docs',
+      title: 'Todo API Docs',
       version: appVersion,
-      description: 'Sample API',
+      description: 'This is sample documentation for the Todo web app.',
     },
     components: {
       headers,
@@ -32,15 +35,18 @@ const options: OAS3Options = {
       responses,
       requestBodies,
     },
-    tags,
+    tags: [
+      {
+        name: 'Todo',
+        description: 'Everything about todos',
+      },
+    ],
   },
 };
 
-async function createSwaggerSpec() {
+async function generateSwaggerSpec() {
   try {
     const swaggerSpec = swaggerJSDoc(options);
-
-    console.log(swaggerSpec);
 
     const outputPath = path.resolve(__dirname, '../swagger.json');
     const outputData = JSON.stringify(swaggerSpec, null, 4);
@@ -51,4 +57,4 @@ async function createSwaggerSpec() {
   }
 }
 
-createSwaggerSpec();
+generateSwaggerSpec();

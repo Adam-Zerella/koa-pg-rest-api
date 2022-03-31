@@ -4,13 +4,13 @@
     "target": "esnext",
     "module": "commonjs",
     "esModuleInterop": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "alwaysStrict": true,
     "declaration": false,
-    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "removeComments": true,
-    "outDir": "dist/",
+    "outDir": "dist",
     "baseUrl": "."
   },
   "include": ["./src/**/*"]

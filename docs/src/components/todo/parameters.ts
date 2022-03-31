@@ -1,3 +1,6 @@
+/**
+ * @TODO Autogenerate this from Yup
+ */
 export default {
   todoId: {
     name: 'todoId',

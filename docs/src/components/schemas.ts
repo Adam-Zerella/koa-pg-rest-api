@@ -1,10 +1,22 @@
 import { OAS3Definition } from 'swagger-jsdoc';
 
-import { components as generatedSchemas } from './types.json';
+import { components as generatedSchemas } from '../../dist/types.json';
 
-import ResponseSchema from './schemas/response';
+const ResponseSchema = {
+  type: 'object',
+  required: ['data'],
+  properties: {
+    data: {
+      type: 'object',
+      nullable: true,
+    },
+    meta: {
+      type: 'object',
+    },
+  },
+};
 
 export const schemas: OAS3Definition['schemas'] = {
-  ...ResponseSchema,
+  Response: ResponseSchema,
   ...generatedSchemas.schemas,
 };
