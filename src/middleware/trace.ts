@@ -8,7 +8,7 @@ const logger = log.getLogger('TraceMiddleware');
 /**
  * Attaches a unique ID to each request that comes in for tracability.
  */
-export default function rquidMiddleware() {
+export default function traceMiddleware() {
   return async function (ctx: Context, next: Next) {
     const requestId = uuidv4();
 

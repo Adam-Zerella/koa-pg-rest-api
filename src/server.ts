@@ -6,7 +6,7 @@ import bodyParser from 'koa-bodyparser';
 import env from '@modules/env';
 import log from '@modules/log';
 import router from '@routes/routes';
-import rquid from '@middleware/rquid';
+import requestTrace from '@middleware/trace';
 import errorHandler from '@middleware/error';
 
 const app = new Koa();
@@ -17,7 +17,7 @@ app.silent = true;
 
 app.use(errorHandler());
 app.use(helmet());
-app.use(rquid());
+app.use(requestTrace());
 app.use(
   cors({
     origin: env.CORS_ORIGIN,
