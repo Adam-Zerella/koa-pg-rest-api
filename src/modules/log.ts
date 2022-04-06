@@ -13,9 +13,11 @@ function getLogger(name: string) {
     name,
     enabled: !isTest,
     serializers: {
-      ctx: ({ state, header }: AppContext) => ({
+      ctx: ({ state, header, path, ip }: AppContext) => ({
         rquid: state.rquid,
         agent: header['user-agent'],
+        route: path,
+        ip,
       }),
       err: (err) => ({
         name: err.name,
