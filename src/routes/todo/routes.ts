@@ -17,6 +17,9 @@ const router = new Router();
  *     responses:
  *       200:
  *        $ref: '#/components/responses/listTodo'
+ *     parameters:
+ *       - $ref: '#/components/parameters/page'
+ *       - $ref: '#/components/parameters/sort'
  */
 router.get(
   '/',

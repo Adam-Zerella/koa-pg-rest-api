@@ -32,4 +32,4 @@ app.use(router.allowedMethods());
 
 app.listen(env.PORT);
 
-logger.info(`Server started at http://0.0.0.0:${env.PORT}`);
+logger.info(`Server started and is listening at: http://0.0.0.0:${env.PORT}`);

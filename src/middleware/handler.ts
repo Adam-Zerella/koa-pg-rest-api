@@ -29,10 +29,10 @@ export default function handlerMiddleware(handlerFn: HandlerFn) {
     await next();
 
     try {
-      const { statusCode = 200, data } = await handlerFn(ctx);
+      const { statusCode = 200, data, meta } = await handlerFn(ctx);
 
       ctx.status = statusCode;
-      ctx.body = data;
+      ctx.body = { data, meta };
     } catch (err) {
       logger.error({ ctx }, 'Handler failed to return a result');
       throw err;
