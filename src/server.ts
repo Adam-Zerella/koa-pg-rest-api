@@ -8,6 +8,7 @@ import log from '@modules/log';
 import router from '@routes/routes';
 import requestTrace from '@middleware/trace';
 import errorHandler from '@middleware/error';
+import routeNotFound from '@middleware/404';
 
 const app = new Koa();
 const logger = log.getLogger('Server');
@@ -18,6 +19,7 @@ app.silent = true;
 app.use(errorHandler());
 app.use(helmet());
 app.use(requestTrace());
+app.use(routeNotFound());
 app.use(
   cors({
     origin: env.CORS_ORIGIN,
