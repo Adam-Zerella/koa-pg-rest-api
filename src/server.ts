@@ -5,6 +5,7 @@ import bodyParser from 'koa-bodyparser';
 
 import env from '@modules/env';
 import log from '@modules/log';
+import { ALLOWED_METHODS } from '@modules/koa/constants';
 import router from '@routes/routes';
 import requestTrace from '@middleware/trace';
 import errorHandler from '@middleware/error';
@@ -23,7 +24,7 @@ app.use(routeNotFound());
 app.use(
   cors({
     origin: env.CORS_ORIGIN,
-    allowMethods: ['GET', 'PUT', 'POST', 'DELETE'],
+    allowMethods: ALLOWED_METHODS,
     allowHeaders: ['Content-Type', 'Authorization'],
     exposeHeaders: ['Content-Length', 'Date', 'X-Request-ID'],
   }),

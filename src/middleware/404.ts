@@ -13,10 +13,10 @@ export default function routeNotFoundMiddleware() {
 
     logger.debug({ ctx }, 'Caught request for unknown route');
 
-    if (status === 404 && body == null) {
+    if (status === 404 && body === undefined) {
       ctx.status = 404;
       ctx.body = {
-        error: 'Route not found',
+        error: 'No route here',
       };
     }
 

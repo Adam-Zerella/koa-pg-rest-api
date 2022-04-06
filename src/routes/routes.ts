@@ -1,8 +1,12 @@
 import Router from '@koa/router';
 
+import { ALLOWED_METHODS } from '@modules/koa/constants';
+
 import todoRouter from './todo/routes';
 
-const router = new Router();
+const router = new Router({
+  methods: ALLOWED_METHODS,
+});
 
 router.use('/v1/todo', todoRouter.routes());
 
