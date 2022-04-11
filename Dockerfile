@@ -11,9 +11,11 @@ RUN yarn install --production --pure-lockfile
 # Run it
 FROM docker.io/node:lts-alpine
 WORKDIR /opt/app
-RUN apk -U add --no-cache
-COPY --from=builder --chown=1000:node node_modules/ ./node_modules
-COPY --from=builder --chown=1000:node dist/ ./dist
-COPY --from=builder --chown=1000:node package.json ./
-HEALTHCHECK CMD curl --fail http://127.0.0.1:5000/v1/healthzzz || exit 1
+RUN apk upgrade --no-cache
+USER node
+COPY --from=builder --chown=node:node node_modules ./node_modules
+COPY --from=builder --chown=node:node dist ./dist
+COPY --from=builder --chown=node:node package.json .
+HEALTHCHECK --interval=10m --timeout=5s \
+    CMD curl --fail http://localhost:5000/ || exit 1
 CMD [ "node", "dist/server.js" ]
