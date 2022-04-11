@@ -1,13 +1,13 @@
 import { ValidationError } from 'yup';
 
-import log from '@modules/log';
+// import log from '@modules/log';
 import ApiError from '@modules/error';
 
 import type { Next } from 'koa';
 import type { AppContext } from '@modules/koa/types';
 import type { AnyObjectSchema } from 'yup';
 
-const logger = log.getLogger('ValidateMiddleware');
+// const logger = log.getLogger('ValidateMiddleware');
 
 export interface Schemas {
   query?: AnyObjectSchema;
@@ -40,7 +40,7 @@ export default function validateMiddleware(schemas: Schemas) {
       await next();
     } catch (err) {
       if (err instanceof ValidationError) {
-        logger.error({ ctx, err }, 'Failed to validate schema');
+        // logger.error({ ctx, err }, 'Failed to validate schema');
         throw new ApiError(err.message, 400);
       }
 

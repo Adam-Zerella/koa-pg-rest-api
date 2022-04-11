@@ -1,4 +1,4 @@
-import log from '@modules/log';
+// import log from '@modules/log';
 
 import type { Next } from 'koa';
 import type { AppContext } from '@modules/koa/types';
@@ -18,7 +18,7 @@ export interface HandlerFnResult<TData> {
 
 type HandlerFn = (ctx: AppContext) => Promise<HandlerFnResult<unknown>>;
 
-const logger = log.getLogger('HandlerMiddleware');
+// const logger = log.getLogger('HandlerMiddleware');
 
 /**
  * Wrap a function callback for error handling
@@ -33,7 +33,7 @@ export default function handlerMiddleware(handlerFn: HandlerFn) {
       ctx.status = statusCode;
       ctx.body = { data, meta };
     } catch (err) {
-      logger.error({ ctx }, 'Handler failed to return a result');
+      // logger.error({ ctx }, 'Handler failed to return a result');
       throw err;
     }
   };

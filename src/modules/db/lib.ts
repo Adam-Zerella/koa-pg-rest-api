@@ -3,9 +3,9 @@ import { attachPaginate } from 'knex-paginate';
 import { omit } from 'ramda';
 
 import env from '@modules/env';
-import log from '@modules/log';
+// import log from '@modules/log';
 
-const logger = log.getLogger('QueryBuilder');
+// const logger = log.getLogger('QueryBuilder');
 
 /** Attaches a `.paginate()` function to Knex' query builder */
 attachPaginate();
@@ -21,13 +21,13 @@ export default knex({
 
   log: {
     debug({ sql }) {
-      logger.debug(sql);
+      // logger.debug(sql);
     },
     warn({ sql }) {
-      logger.warn(sql);
+      // logger.warn(sql);
     },
     error({ sql }) {
-      logger.error(sql);
+      // logger.error(sql);
     },
   },
 

@@ -1,6 +1,6 @@
 import { isEmpty } from 'ramda';
 
-import log from '@modules/log';
+// import log from '@modules/log';
 import { HandlerFnResult } from '@middleware/handler';
 
 import {
@@ -15,7 +15,7 @@ import { Todo } from './types';
 import type { AppContext } from '@modules/koa/types';
 import type { TodoBody, TodoParam, TodoQuery } from './schemas';
 
-const logger = log.getLogger('TodoHandler');
+// const logger = log.getLogger('TodoHandler');
 
 export async function findAll(
   ctx: AppContext<null, null, TodoQuery>,
@@ -23,7 +23,7 @@ export async function findAll(
   const { state } = ctx;
   const { query } = state;
 
-  logger.info({ ctx }, `Searching records`);
+  // logger.info({ ctx }, `Searching records`);
 
   const { data, meta } = await list(query);
 
@@ -34,7 +34,7 @@ export async function findById(ctx: AppContext<TodoParam>): Promise<HandlerFnRes
   const { params } = ctx;
   const { todoId } = params;
 
-  logger.info({ ctx }, `Finding record with ID '${todoId}'`);
+  // logger.info({ ctx }, `Finding record with ID '${todoId}'`);
 
   const data = await findOneOrThrow(todoId);
   if (isEmpty(data)) {
@@ -49,7 +49,7 @@ export async function create(ctx: AppContext<null, TodoBody>): Promise<HandlerFn
 
   const [data] = await insertOneOrThrow<TodoBody>(body);
 
-  logger.info({ ctx }, `Created record with ID '${data.id}'`);
+  // logger.info({ ctx }, `Created record with ID '${data.id}'`);
 
   return { data, statusCode: 201 };
 }
@@ -63,7 +63,7 @@ export async function update(ctx: AppContext<TodoParam, TodoBody>): Promise<Hand
     return { data: null, statusCode: 404 };
   }
 
-  logger.info({ ctx }, `Updating record with ID '${todoId}'`);
+  // logger.info({ ctx }, `Updating record with ID '${todoId}'`);
 
   const [result] = await updateOneOrThrow<TodoBody>(todoId, body);
 
@@ -76,7 +76,7 @@ export async function remove(ctx: AppContext<TodoParam>): Promise<HandlerFnResul
 
   await findOneOrThrow(todoId);
 
-  logger.info({ ctx }, `Deleting record with ID '${todoId}'`);
+  // logger.info({ ctx }, `Deleting record with ID '${todoId}'`);
 
   const [data] = await deleteOneOrThrow(todoId);
 

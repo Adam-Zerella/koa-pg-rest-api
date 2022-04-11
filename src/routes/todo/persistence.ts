@@ -1,11 +1,11 @@
 import ApiError from '@modules/error';
 import db from '@modules/db/lib';
-import log from '@modules/log';
+// import log from '@modules/log';
 import { MAX_RECORD_LIMIT } from '@modules/db/constants';
 
 import type { TodoQuery } from './schemas';
 
-const logger = log.getLogger('TodoPersistence');
+// const logger = log.getLogger('TodoPersistence');
 
 export async function list(filters: TodoQuery) {
   try {
@@ -22,7 +22,7 @@ export async function list(filters: TodoQuery) {
       },
     };
   } catch (err) {
-    logger.error({ error: err }, 'Failed to query DB');
+    // logger.error({ error: err }, 'Failed to query DB');
     throw new ApiError('Failed to list records', 500);
   }
 }
@@ -31,7 +31,7 @@ export async function findOneOrThrow(todoId: string) {
   try {
     return await db('todo').where({ id: todoId }).first();
   } catch (err) {
-    logger.error({ error: err }, 'Failed to query DB');
+    // logger.error({ error: err }, 'Failed to query DB');
     throw new ApiError('Failed to find record', 500);
   }
 }
@@ -40,7 +40,7 @@ export async function insertOneOrThrow<TQuery>(query: TQuery) {
   try {
     return await db('todo').insert(query).returning('*');
   } catch (err) {
-    logger.error({ error: err }, 'Failed to query DB');
+    // logger.error({ error: err }, 'Failed to query DB');
     throw new ApiError('Failed to insert record', 500);
   }
 }
@@ -49,7 +49,7 @@ export async function updateOneOrThrow<TQuery>(todoId: string, query: TQuery) {
   try {
     return await db('todo').update(query).where({ id: todoId }).returning('*');
   } catch (err) {
-    logger.error({ error: err }, 'Failed to query DB');
+    // logger.error({ error: err }, 'Failed to query DB');
     throw new ApiError('Failed to update record', 500);
   }
 }
@@ -58,7 +58,7 @@ export async function deleteOneOrThrow(todoId: string) {
   try {
     return await db('todo').where({ id: todoId }).delete().returning('*');
   } catch (err) {
-    logger.error({ error: err }, 'Failed to query DB');
+    // logger.error({ error: err }, 'Failed to query DB');
     throw new ApiError('Failed to delete record', 500);
   }
 }
