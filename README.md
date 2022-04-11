@@ -32,7 +32,7 @@ docker run \
     -e POSTGRES_DB=todos \
     -e LANG='en_US.UTF-8' \
     -e PGDATA=/var/lib/postgresql/data/pgdata \
-    -v postgres:/var/lib/postgresql/data \
+    -v $(pwd)/data:/var/lib/postgresql/data \
     -p 5432:5432 \
     -d postgres:14
 ```
