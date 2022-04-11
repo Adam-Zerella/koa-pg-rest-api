@@ -16,6 +16,6 @@ USER node
 COPY --from=builder --chown=node:node node_modules ./node_modules
 COPY --from=builder --chown=node:node dist ./dist
 COPY --from=builder --chown=node:node package.json .
-HEALTHCHECK --interval=10m --timeout=5s \
-    CMD curl --fail http://localhost:5000/ || exit 1
+HEALTHCHECK --interval=5m --timeout=5s \
+    CMD curl --fail http://127.0.0.1:5000/health || exit 1
 CMD [ "node", "dist/server.js" ]
