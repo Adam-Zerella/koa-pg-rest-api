@@ -57,11 +57,32 @@ yarn dev
 
 ## Deployment 🚢
 
-TOOD
+You could run this container through any major cloud provider, though for local testing try:
+
+```
+docker build . -t kpra-dev
+```
+
+and:
+
+```sh
+docker run \
+    -e CORS_ORIGIN=* \
+    -e PORT=5000 \
+    -e DB_URI=postgresql://postgres:postgres@127.0.0.1:5432/todos \
+    -p 5000:5000 \
+    -d \
+    kpra-dev
+```
 
 ## Documentation 📚
 
-TODO
+From the project root directory, run this command to generate an OpenAPI 3 Swagger definition at `docs/dist/swagger.json`:
+
+```sh
+yarn docs
+```
+
 
 ## Known issues
 
