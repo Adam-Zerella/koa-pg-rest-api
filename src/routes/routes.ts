@@ -8,7 +8,7 @@ const router = new Router({
   methods: ALLOWED_METHODS,
 });
 
-router.use('/health', (ctx) => (ctx.body = 'OK'));
+router.get('/health', (ctx) => (ctx.body = 'OK'));
 router.use('/v1/todo', todoRouter.routes());
 
 export default router;

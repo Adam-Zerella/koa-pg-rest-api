@@ -1,3 +1,5 @@
+import http from 'http';
+
 import Koa from 'koa';
 import helmet from 'koa-helmet';
 import cors from '@koa/cors';
@@ -32,6 +34,16 @@ app.use(
 app.use(bodyParser());
 app.use(router.routes());
 
-app.listen(env.PORT);
+const server = http.createServer(app.callback());
+
+server.listen(env.PORT);
+
+/** Best practice for gracefully shutting down the Node process, avoids dangling ports and connections. */
+async function closeGracefully() {
+  logger.info('SIGINT recieved, gracefully shutting down...');
+  await server.close();
+  process.exit();
+}
+process.on('SIGINT', closeGracefully);
 
 logger.info(`Server started and is listening at: http://0.0.0.0:${env.PORT}`);
