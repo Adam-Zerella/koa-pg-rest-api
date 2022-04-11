@@ -1,6 +1,6 @@
-import { Knex } from 'knex';
-
 import { TABLES } from '@modules/db/constants';
+
+import type { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable(TABLES.TODO, function (tbl) {

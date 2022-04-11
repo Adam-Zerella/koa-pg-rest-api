@@ -1,6 +1,6 @@
-import { Knex } from 'knex';
-
 import { TABLES } from '@modules/db/constants';
+
+import type { Knex } from 'knex';
 
 const triggerName = 'on_update_user';
 const fnName = 'record_user_action';

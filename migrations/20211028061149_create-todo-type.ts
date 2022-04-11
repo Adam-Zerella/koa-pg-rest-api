@@ -1,6 +1,6 @@
-import { Knex } from 'knex';
-
 import { TABLES } from '@modules/db/constants';
+
+import type { Knex } from 'knex';
 
 const tableNames = Object.values(TABLES).map((tableName) => `'${tableName}'`);
 
