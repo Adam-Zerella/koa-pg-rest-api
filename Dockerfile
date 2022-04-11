@@ -4,9 +4,9 @@ COPY package.json ./
 COPY yarn.lock ./
 COPY tsconfig.json ./
 COPY src ./src
-RUN yarn install --pure-lockfile
+RUN yarn install --frozen-lockfile
 RUN yarn build
-RUN yarn install --production --pure-lockfile
+RUN yarn install --production --frozen-lockfile
 
 # Run it
 FROM docker.io/node:lts-alpine
