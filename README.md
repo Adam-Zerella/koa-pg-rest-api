@@ -59,7 +59,7 @@ yarn dev
 
 You could run this container through any major cloud provider, though for local testing try:
 
-```
+```sh
 docker build . -t kpra-dev
 ```
 
