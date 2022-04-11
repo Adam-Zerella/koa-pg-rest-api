@@ -1,7 +1,7 @@
 {
   "verbose": false,
   "watch": ["src/"],
-  "ignore": ["__tests__/", "node_modules/", ".git"],
+  "ignore": ["__tests__/"],
   "ext": ".ts",
-  "exec": "node --trace-deprecation --enable-source-maps -r ts-node/register -r dotenv/config src/server.ts"
+  "exec": "node --trace-deprecation --trace-warnings --enable-source-maps -r ts-node/register -r dotenv/config src/server.ts"
 }
