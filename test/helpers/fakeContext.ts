@@ -1,4 +1,4 @@
-import { AppContext } from '@modules/koa/types';
+import type { AppContext } from '@modules/koa/types';
 
 interface FakeRequest {
   query?: unknown;

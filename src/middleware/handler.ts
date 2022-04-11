@@ -1,7 +1,6 @@
-import { Next } from 'koa';
-
 import log from '@modules/log';
 
+import type { Next } from 'koa';
 import type { AppContext } from '@modules/koa/types';
 
 interface HandlerMeta {

@@ -1,7 +1,8 @@
-import { Context, Next } from 'koa';
 import { v4 as uuidv4 } from 'uuid';
 
 import log from '@modules/log';
+
+import type { Context, Next } from 'koa';
 
 const logger = log.getLogger('TraceMiddleware');
 

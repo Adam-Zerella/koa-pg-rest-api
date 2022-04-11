@@ -1,7 +1,7 @@
-import { Context, Next } from 'koa';
-
 import log from '@modules/log';
 import ApiError from '@modules/error';
+
+import type { Context, Next } from 'koa';
 
 const logger = log.getLogger('ErrorMiddleware');
 

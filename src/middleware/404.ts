@@ -1,6 +1,6 @@
-import { Context, Next } from 'koa';
-
 import log from '@modules/log';
+
+import type { Context, Next } from 'koa';
 
 const logger = log.getLogger('NoRouteMiddleware');
 

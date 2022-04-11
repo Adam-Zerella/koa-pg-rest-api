@@ -1,7 +1,6 @@
-import { Knex } from 'knex';
-
 import { TABLES } from '@modules/db/constants';
 
+import type { Knex } from 'knex';
 import type { Todo } from '@routes/todo/types';
 
 export async function seed(knex: Knex): Promise<void> {

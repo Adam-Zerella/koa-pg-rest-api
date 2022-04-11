@@ -1,9 +1,9 @@
-import { Next } from 'koa';
 import { ValidationError } from 'yup';
 
 import log from '@modules/log';
 import ApiError from '@modules/error';
 
+import type { Next } from 'koa';
 import type { AppContext } from '@modules/koa/types';
 import type { AnyObjectSchema } from 'yup';
 
@@ -31,10 +31,12 @@ export default function validateMiddleware(schemas: Schemas) {
         ctx.params = await paramSchema.validate(params, { stripUnknown: true });
       }
       if (querySchema) {
-        /** Koa does not let us mutate ctx.query, we store it in state as a workaround. */
+        /**
+         * @see https://github.com/koajs/koa/blob/master/lib/request.js#L185
+         * We cannot set ctx.query and preserve the valid, casted types, store it in state as a workaround.
+         */
         ctx.state.query = await querySchema.validate(query, { stripUnknown: true });
       }
-
       await next();
     } catch (err) {
       if (err instanceof ValidationError) {
