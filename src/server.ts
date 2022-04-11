@@ -36,14 +36,17 @@ app.use(router.routes());
 
 const server = http.createServer(app.callback());
 
-server.listen(env.PORT);
-
-/** Best practice for gracefully shutting down the Node process, avoids dangling ports and connections. */
+/**
+ * Best practice for gracefully shutting down the Node process,
+ * avoids dangling ports and connections.
+ */
 async function closeGracefully() {
   logger.info('SIGINT recieved, gracefully shutting down...');
   await server.close();
   process.exit();
 }
 process.on('SIGINT', closeGracefully);
+
+server.listen(env.PORT);
 
 logger.info(`Server started and is listening at: http://0.0.0.0:${env.PORT}`);
