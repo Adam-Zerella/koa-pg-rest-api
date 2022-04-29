@@ -4,7 +4,7 @@ import type { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable(TABLES.TODO, function (tbl) {
-    tbl.uuid('id').defaultTo(knex.raw('uuid_generate_v4()')).primary();
+    tbl.uuid('id').defaultTo(knex.raw('gen_random_uuid()')).primary();
     // tbl.enum('name', roles).unique().notNullable();
     tbl.string('label');
     tbl.specificType('type', 'todo_type');
