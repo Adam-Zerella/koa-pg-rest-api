@@ -47,6 +47,12 @@ To create the database tables and seed it with some initial data:
 yarn db
 ```
 
+For running migrations in production, **only use**: 
+
+```sh
+yarn db:migrate
+```
+
 #### Hot reloading 🔫
 
 To spin up a local instance of this API:

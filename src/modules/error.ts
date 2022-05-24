@@ -12,7 +12,7 @@ export default class ApiError extends Error {
     return this.message;
   }
 
-  get getStatusCode() {
+  public get getStatusCode() {
     return this.statusCode;
   }
 }
